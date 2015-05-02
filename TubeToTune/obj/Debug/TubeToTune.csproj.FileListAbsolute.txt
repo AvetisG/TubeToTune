@@ -25,3 +25,5 @@ C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\bin\System.Web.WebPages.Razo
 C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\obj\Debug\TubeToTune.csprojResolveAssemblyReference.cache
 C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\obj\Debug\TubeToTune.dll
 C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\obj\Debug\TubeToTune.pdb
+C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\bin\YoutubeExtractor.dll
+C:\Users\ghukasyana\Documents\TubeToTune\TubeToTune\bin\YoutubeExtractor.xml

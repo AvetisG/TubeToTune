@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>YoutubeExtractor</id>
+    <version>0.10.6</version>
+    <title>YoutubeExtractor</title>
+    <authors>Dennis Daume</authors>
+    <owners>Dennis Daume</owners>
+    <licenseUrl>http://opensource.org/licenses/gpl-2.0</licenseUrl>
+    <projectUrl>http://github.com/flagbug/YoutubeExtractor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>YoutubeExtractor is a library to extract the download link from YouTube videos, download them and/or extract their audio track.</description>
+    <tags>youtube download extract audio WinRT WP8 Android iOS Xamarin</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.6" />
+    </dependencies>
+  </metadata>
+</package>
