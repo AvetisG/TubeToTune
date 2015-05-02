@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeToTune", "TubeToTune\TubeToTune.csproj", "{57A54CF5-7295-4204-9F72-A2CF5B946C6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeToTune.Tests", "TubeToTune.Tests\TubeToTune.Tests.csproj", "{B759B59B-720F-437A-9C1C-091E55F5C6C4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{57A54CF5-7295-4204-9F72-A2CF5B946C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57A54CF5-7295-4204-9F72-A2CF5B946C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57A54CF5-7295-4204-9F72-A2CF5B946C6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B759B59B-720F-437A-9C1C-091E55F5C6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B759B59B-720F-437A-9C1C-091E55F5C6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B759B59B-720F-437A-9C1C-091E55F5C6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B759B59B-720F-437A-9C1C-091E55F5C6C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
