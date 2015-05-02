@@ -11,25 +11,25 @@ namespace TubeToTune.Controllers
     {
 	    public ActionResult Index()
 	    {
-			IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=9hEWf_YlE30");
+			//IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls("https://www.youtube.com/watch?v=9hEWf_YlE30");
 	   
-			VideoInfo video = videoInfos
-				.Where(info => info.CanExtractAudio)
-				.OrderByDescending(info => info.AudioBitrate)
-				.First();
+			//VideoInfo video = videoInfos
+			//	.Where(info => info.CanExtractAudio)
+			//	.OrderByDescending(info => info.AudioBitrate)
+			//	.First();
 
 				
-			if (video.RequiresDecryption)
-			{
-				DownloadUrlResolver.DecryptDownloadUrl(video);
-			}
+			//if (video.RequiresDecryption)
+			//{
+			//	DownloadUrlResolver.DecryptDownloadUrl(video);
+			//}
 
-			var audioDownloader = new AudioDownloader(video, Path.Combine("C:/", video.Title + video.AudioExtension));
+			//var audioDownloader = new AudioDownloader(video, Path.Combine("C:/", video.Title + video.AudioExtension));
 
-			audioDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage * 0.85);
-			audioDownloader.AudioExtractionProgressChanged += (sender, args) => Console.WriteLine(85 + args.ProgressPercentage * 0.15);
+			//audioDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage * 0.85);
+			//audioDownloader.AudioExtractionProgressChanged += (sender, args) => Console.WriteLine(85 + args.ProgressPercentage * 0.15);
 
-			audioDownloader.Execute();
+			//audioDownloader.Execute();
 
 		    return View();
 	    }
