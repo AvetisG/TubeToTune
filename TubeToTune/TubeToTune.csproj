@@ -122,7 +122,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\vendor\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\vendor\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\vendor\bootstrap\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\vendor\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\vendor\bootstrap\bootstrap.css.map" />
+    <None Include="Scripts\vendor\bootstrap\jquery-1.9.1.intellisense.js" />
+    <Content Include="Icon.png" />
+    <Content Include="Scripts\vendor\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\vendor\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.js" />
+    <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\vendor\bootstrap\npm.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -131,6 +149,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
