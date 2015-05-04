@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Bootstrap Example</title>
+        <title>Convert YouTube Videos Into MP3</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="~/Content/vendor/bootstrap/bootstrap.min.css">
         <script src="~/Scripts/vendor/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="~/Scripts/vendor/bootstrap/bootstrap.min.js"></script>
+        <script src="~/Scripts/vendor/angular/angular.min.js"></script>
+        <script src="~/Scripts/app/TubeToTuneApp.js"></script>
         <style>
             [class*="col-"] 
             {
@@ -17,7 +19,7 @@
     </head>
     <body>
 
-        <div class="container">
+        <div class="container" ng-app="TubeToTuneApp" ng-controller="TuneConvertController">
     
             <div class="jumbotron">
                 <h1>Tube to Tune</h1>
@@ -30,11 +32,11 @@
                 <div class="row">
         
                     <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="Enter YouTube video link">      
+                        <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
                     </div>
 
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-default">Convert Into A Tune</button>
+                        <button type="submit" class="btn btn-default" ng-click="ConvertToTune(youtubeVideoLink)">Convert Into A Tune</button>
                     </div>
 
                 </div>
