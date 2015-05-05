@@ -16,6 +16,8 @@ namespace TubeToTune.Controllers
 		{
 			if (youTubeVideoLink.link == null) return "Please enter a YouTube link.";
 
+			var temporaryPath = String.Empty;
+
 			try
 			{
 				IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youTubeVideoLink.link, false);
@@ -27,9 +29,10 @@ namespace TubeToTune.Controllers
 
 				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-				var audioDownloader = new AudioDownloader(video,
-					Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-					RemoveIllegalPathCharacters(video.Title) + video.AudioExtension));
+				temporaryPath = Path.Combine(Path.GetTempPath(),
+					RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
+
+				var audioDownloader = new AudioDownloader(video, temporaryPath);
 
 				audioDownloader.Execute();
 			}
@@ -38,7 +41,7 @@ namespace TubeToTune.Controllers
 				throw new AudioExtractionException(e.Message);
 			}
 
-			return "Video has been converted.";
+			return temporaryPath;
 		}
 
 		private static string RemoveIllegalPathCharacters(string path)
