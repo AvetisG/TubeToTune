@@ -12,6 +12,8 @@ namespace TubeToTune.Controllers
 		[HttpPost]
 		public string ConvertTubeToTune([FromBody] YouTubeLink youTubeVideoLink)
 		{
+			if (youTubeVideoLink.link == null) return "Please enter a YouTube link.";
+
 			IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youTubeVideoLink.link);
 
 			VideoInfo video = videoInfos
@@ -27,10 +29,6 @@ namespace TubeToTune.Controllers
 
 			// TODO: Obviously this is a placeholder but will be making a dialog box so that the user can choose his/her prefered directory before downloading + the name of the video
 			var audioDownloader = new AudioDownloader(video, Path.Combine("C:/Users/ghukasyana/Documents/Downloads", "DownloadedVideo" + video.AudioExtension));
-
-			audioDownloader.DownloadProgressChanged += (sender, args) => Console.WriteLine(args.ProgressPercentage*0.85);
-			audioDownloader.AudioExtractionProgressChanged +=
-				(sender, args) => Console.WriteLine(85 + args.ProgressPercentage*0.15);
 
 			audioDownloader.Execute();
 
