@@ -29,7 +29,7 @@ namespace TubeToTune.Controllers
 
 				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-				temporaryPath = Path.Combine(Path.GetTempPath(),
+				temporaryPath = Path.Combine("../Models/",
 					RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
 
 				var audioDownloader = new AudioDownloader(video, temporaryPath);
