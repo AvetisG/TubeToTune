@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Http;
 using TubeToTune.Models;
 using YoutubeExtractor;
@@ -29,7 +30,7 @@ namespace TubeToTune.Controllers
 
 				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-				temporaryPath = Path.Combine(Path.GetTempPath(),
+				temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"),
 					RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
 
 				var audioDownloader = new AudioDownloader(video, temporaryPath);
