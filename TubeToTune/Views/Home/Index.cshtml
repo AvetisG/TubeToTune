@@ -17,6 +17,11 @@
                 padding: 10px;
                 text-align: center;
             }
+            body
+            {
+                background-color: #D2CECE;   
+            }
+
         </style>
     </head>
     <body>
@@ -32,26 +37,27 @@
                 <p>Convert any YouTube video into its MP3 equivalent and enjoy listening to it on any device of your choice!</p>
             </div>
     
-            <form class="form-horizontal" role="form">
-
+            <div class="well well-lg">
+                <form class="form-horizontal" role="form">
                 
-	            <div class="row">
+                    <div class="row">
         
-		            <div class="col-md-10">
-			            <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
-		            </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
+                        </div>
 
-		            <div class="col-md-2">
-			            <button type="submit" class="btn btn-default" ng-click="ConvertToTune(youtubeVideoLink)">Convert Into A Tune</button>
-		            </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-default" ng-click="ConvertToTune(youtubeVideoLink)">Convert Into A Tune</button>
+                        </div>
 
-	            </div>
+                    </div>
 				
-				<div class="alert alert-success" ng-if="successfullyConverted == true">
-				    <strong>Success!</strong> You can access your downloaded and converted MP3 file from here: <a href="/api/download">Download File</a>
-				</div>
-                
-            </form>
+                </form>
+            </div>
+
+            <div class="alert alert-success" ng-if="successfullyConverted == true">
+                <strong>Success!</strong> You can access your downloaded and converted MP3 file from here: <a href="/api/download">Download File</a>
+            </div>
 
         </div>
 

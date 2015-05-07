@@ -16,7 +16,11 @@ namespace TubeToTune.Controllers
 			var result = new HttpResponseMessage(HttpStatusCode.OK);
 			var stream = new FileStream(path, FileMode.Open);
 			result.Content = new StreamContent(stream);
-			result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+			result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+			{
+				FileName = "convertedVideo.mp3"
+			};
+
 			result.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(path));
 			return result;
 		}
