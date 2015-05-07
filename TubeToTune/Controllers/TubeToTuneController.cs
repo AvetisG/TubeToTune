@@ -31,7 +31,7 @@ namespace TubeToTune.Controllers
 				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
 				temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"),
-					RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
+					"video.mp3");
 
 				var audioDownloader = new AudioDownloader(video, temporaryPath);
 
