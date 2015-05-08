@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\custom\main.css" />
     <Content Include="Content\vendor\angular\loading-bar\loading-bar.css" />
     <Content Include="Content\vendor\angular\loading-bar\loading-bar.min.css" />
     <Content Include="Content\vendor\bootstrap\bootstrap-theme.css" />

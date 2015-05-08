@@ -1,0 +1,9 @@
+﻿[class*="col-"] 
+{
+    padding: 10px;
+    text-align: center;
+}
+body
+{
+    background-color: #D2CECE;   
+}
