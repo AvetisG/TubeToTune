@@ -28,8 +28,13 @@
             </div>
     
             <div class="alert alert-success" ng-if="successfullyConverted == true">
-                <strong>Success!</strong> You can now access your converted MP3 file from here: <a href="/api/download/{{ convertedAudioFilename }}"><button class="btn btn-success">Downlad Audio</button></a>
+                <strong>Success!</strong> You can now access your converted MP3 file from here: 
+                <a href="/api/download/{{ convertedAudioFilename }}"><button class="btn btn-success">Download Audio</button></a>
             </div>
+            
+             <div class="alert alert-warning" ng-if="successfullyConverted == false">
+                 <strong>Failed!</strong> {{ exceptionMessage }}
+             </div>
 
             <div class="well well-lg">
                   

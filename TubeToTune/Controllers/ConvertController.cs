@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
@@ -15,7 +14,7 @@ namespace TubeToTune.Controllers
 		[HttpPost]
 		public string ConvertTubeToTune([FromBody] string youTubeVideoLink)
 		{
-			if (youTubeVideoLink == null) return "Please enter a YouTube link.";
+			if (string.IsNullOrEmpty(youTubeVideoLink)) throw new AudioExtractionException("Please enter a YouTube link.");
 
 			var convertedAudioFilename = String.Empty;
 
