@@ -38,9 +38,9 @@ namespace TubeToTune.Controllers
 
 				audioDownloader.Execute();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
-				throw new HttpResponseException(HttpStatusCode.BadRequest);
+				throw new AudioExtractionException(e.Message);
 			}
 
 			return convertedAudioFilename;
