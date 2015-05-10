@@ -7,8 +7,6 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
         $scope.convertedAudioFilename = "";
         $scope.exceptionMessage = "";
         $scope.successfullyConverted = null;
-
-        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
         
         $http.post('/api/convert',
             JSON.stringify(youTubeVideoLink),
@@ -24,7 +22,7 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
             })
             .error(function (data) {
                 $scope.successfullyConverted = false;
-                $scope.exceptionMessage = data.ExceptionMessage;
+                $scope.exceptionMessage = data.Message;
             });
     };
 });
