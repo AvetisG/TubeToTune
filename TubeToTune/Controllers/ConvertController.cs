@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
-using TubeToTune.Models;
 using YoutubeExtractor;
 
 namespace TubeToTune.Controllers
 {
-	public class TubeToTuneController : ApiController
+	public class ConvertController : ApiController
 	{
 		[HttpPost]
-		public string ConvertTubeToTune([FromBody] YouTubeLink youTubeVideoLink)
+		public string ConvertTubeToTune([FromBody] string youTubeVideoLink)
 		{
-			if (youTubeVideoLink.link == null) return "Please enter a YouTube link.";
+			if (youTubeVideoLink == null) return "Please enter a YouTube link.";
 
-			var temporaryPath = String.Empty;
+			var convertedAudioFilename = String.Empty;
 
 			try
 			{
-				IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youTubeVideoLink.link, false);
+				IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youTubeVideoLink, false);
 
 				VideoInfo video = videoInfos
 					.Where(info => info.CanExtractAudio)
@@ -30,26 +30,27 @@ namespace TubeToTune.Controllers
 
 				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-				temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"),
-					"video.mp3");
+				convertedAudioFilename = RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
+
+				var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/Downloads"), convertedAudioFilename);
 
 				var audioDownloader = new AudioDownloader(video, temporaryPath);
 
 				audioDownloader.Execute();
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
-				throw new AudioExtractionException(e.Message);
+				throw new HttpResponseException(HttpStatusCode.BadRequest);
 			}
 
-			return temporaryPath;
+			return convertedAudioFilename;
 		}
 
 		private static string RemoveIllegalPathCharacters(string path)
 		{
 			string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
 			var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
-			return r.Replace(path, "");
+			return r.Replace(path, "").Replace("&", "and");
 		}
 
 	}
