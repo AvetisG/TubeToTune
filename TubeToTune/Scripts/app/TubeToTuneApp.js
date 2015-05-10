@@ -8,6 +8,8 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
         $scope.exceptionMessage = "";
         $scope.successfullyConverted = null;
 
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+        
         $http.post('/api/convert',
             JSON.stringify(youTubeVideoLink),
             {
