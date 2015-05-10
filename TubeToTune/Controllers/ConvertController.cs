@@ -32,7 +32,7 @@ namespace TubeToTune.Controllers
 
 				convertedAudioFilename = RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
 
-				var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/Downloads"), convertedAudioFilename);
+				var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFilename);
 
 				var audioDownloader = new AudioDownloader(video, temporaryPath);
 
