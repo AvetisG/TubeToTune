@@ -25,6 +25,23 @@
             <div class="jumbotron">
                 <h1>Tube to Tune</h1>
                 <p>Convert any YouTube video into its MP3 equivalent and enjoy listening to it on any device of your choice!</p>
+               
+                <form class="form-horizontal" role="form">
+                
+                    <div class="row">
+        
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Convert Single Tune</button>     
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-default btn-lg btn-block">Convert Multiple Tunes</button>
+                        </div>
+
+                    </div>
+				
+                </form>
+
             </div>
     
             <div class="alert alert-success" ng-if="successfullyConverted == true">
@@ -32,10 +49,10 @@
                 <a href="/api/download/{{ convertedAudioFilename }}"><button class="btn btn-success">Download Audio</button></a>
             </div>
             
-             <div class="alert alert-warning" ng-if="successfullyConverted == false">
-                 <strong>Failed!</strong> {{ exceptionMessage }}
-             </div>
-
+            <div class="alert alert-warning" ng-if="successfullyConverted == false">
+                <strong>Failed!</strong> {{ exceptionMessage }}
+            </div>
+            
             <div class="well well-lg">
                   
                 <form class="form-horizontal" role="form">
