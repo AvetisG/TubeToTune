@@ -8,5 +8,20 @@ namespace TubeToTune.Controllers
 	    {
 		    return View();
 	    }
+
+		public ActionResult ErrorPage()
+		{
+			return View();
+		}
+
+		public PartialViewResult SingleTune()
+		{
+			return PartialView();
+		}
+
+		public PartialViewResult MultipleTunes()
+		{
+			return PartialView();
+		}
     }
 }
