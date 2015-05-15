@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TubeToTune.App_Start
+namespace TubeToTune
 {
 	public class RouteConfig
 	{
