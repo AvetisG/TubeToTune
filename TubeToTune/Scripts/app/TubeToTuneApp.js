@@ -1,25 +1,25 @@
-﻿var TubeToTuneApp = angular.module('TubeToTuneApp', ['angular-loading-bar']);
+﻿var TubeToTuneApp = angular.module('TubeToTuneApp', ['angular-loading-bar', 'ngRoute']);
 
-//TubeToTuneApp.config(function ($routeProvider) {
+TubeToTuneApp.config(function ($routeProvider) {
 
-//    $routeProvider
-//        .when('/',
-//        {
-//            templateUrl: '/Navigation/SingleTune'
-//        })
-//        .when('/singletune',
-//        {
-//            templateUrl: '/Navigation/SingleTune'
-//        })
-//        .when('/multipletunes',
-//        {
-//            templateUrl: '/Navigation/MultipleTunes'
-//        })
-//        .otherwise(
-//        {
-//            templateUrl: '/Navigation/ErrorPage'
-//        });
-//});
+    $routeProvider
+        .when('/',
+        {
+            templateUrl: '/Navigation/SingleTune'
+        })
+        .when('/singletune',
+        {
+            templateUrl: '/Navigation/SingleTune'
+        })
+        .when('/multipletunes',
+        {
+            templateUrl: '/Navigation/MultipleTunes'
+        })
+        .otherwise(
+        {
+            templateUrl: '/Navigation/ErrorPage'
+        });
+});
 
 TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
 
