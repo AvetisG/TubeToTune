@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace TubeToTune.App_Start
+namespace TubeToTune
 {
 	public static class WebApiConfig
 	{

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TubeToTune.App_Start
+namespace TubeToTune
 {
 	public class RouteConfig
 	{
@@ -12,7 +12,7 @@ namespace TubeToTune.App_Start
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Navigation", action = "Index", id = UrlParameter.Optional }
+				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 		}
 	}
