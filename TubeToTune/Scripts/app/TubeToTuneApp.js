@@ -1,5 +1,22 @@
 ﻿var TubeToTuneApp = angular.module('TubeToTuneApp', ['angular-loading-bar', 'ngRoute']);
 
+TubeToTuneApp.config(['$routeProvider',
+  function ($routeProvider) {
+      $routeProvider.
+        when('/', {
+            templateUrl: '/Home/SingleTune',
+        }).
+        when('/singletune', {
+            templateUrl: '/Home/SingleTune',
+        }).
+        when('/multipletunes', {
+            templateUrl: '/Home/MultipleTunes',
+        }).
+        otherwise({
+            templateUrl: '/Home/ErrorPage'
+        });
+  }]);
+
 TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
 
     $scope.ConvertToTune = function(youTubeVideoLink) {
