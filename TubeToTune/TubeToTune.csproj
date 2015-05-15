@@ -113,7 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\DownloadController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ConvertController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -125,8 +125,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\custom\main.css" />
-    <Content Include="Content\vendor\angular\loading-bar\loading-bar.css" />
-    <Content Include="Content\vendor\angular\loading-bar\loading-bar.min.css" />
+    <Content Include="Content\vendor\loading-bar\loading-bar.css" />
+    <Content Include="Content\vendor\loading-bar\loading-bar.min.css" />
     <Content Include="Content\vendor\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\vendor\bootstrap\bootstrap.css" />
@@ -140,8 +140,8 @@
     <Content Include="Content\vendor\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\vendor\bootstrap\bootstrap.css.map" />
     <Content Include="Scripts\app\TubeToTuneApp.js" />
-    <Content Include="Scripts\vendor\angular\loading-bar\loading-bar.js" />
-    <Content Include="Scripts\vendor\angular\loading-bar\loading-bar.min.js" />
+    <Content Include="Scripts\vendor\loading-bar\loading-bar.js" />
+    <Content Include="Scripts\vendor\loading-bar\loading-bar.min.js" />
     <Content Include="Scripts\vendor\angular\standart\angular-animate.js" />
     <Content Include="Scripts\vendor\angular\standart\angular-animate.min.js" />
     <Content Include="Scripts\vendor\angular\standart\angular-aria.js" />
@@ -936,6 +936,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.min.map" />
     <Content Include="Scripts\vendor\angular\standart\version.json" />
+    <Content Include="Views\Navigation\MultipleTunes.cshtml" />
+    <Content Include="Views\Navigation\ErrorPage.cshtml" />
+    <None Include="Views\Navigation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -945,7 +948,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Navigation\SingleTune.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

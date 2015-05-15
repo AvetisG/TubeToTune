@@ -5,13 +5,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="~/Content/vendor/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="~/Content/vendor/angular/loading-bar/loading-bar.min.css">
+        <link rel="stylesheet" href="~/Content/vendor/loading-bar/loading-bar.min.css">
         <link rel="stylesheet" href="~/Content/custom/main.css">
         <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
         <script src="~/Scripts/vendor/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="~/Scripts/vendor/bootstrap/bootstrap.min.js"></script>
         <script src="~/Scripts/vendor/angular/standart/angular.min.js"></script>
-        <script src="~/Scripts/vendor/angular/loading-bar/loading-bar.min.js"></script>
+        <script src="~/Scripts/vendor/angular/standart/angular-route.min.js"></script>
+        <script src="~/Scripts/vendor/loading-bar/loading-bar.min.js"></script>
         <script src="~/Scripts/app/TubeToTuneApp.js"></script>
     </head>
     <body>
@@ -31,11 +32,11 @@
                     <div class="row">
         
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Convert Single Tune</button>     
+                            <a href="#singletune" class="btn btn-primary btn-lg btn-block" role="button">Convert Single Tune</a>     
                         </div>
                         
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-default btn-lg btn-block">Convert Multiple Tunes</button>
+                            <a href="#multipletunes" class="btn btn-warning btn-lg btn-block" role="button">Convert Multiple Tunes</a>
                         </div>
 
                     </div>
@@ -53,24 +54,7 @@
                 <strong>Failed!</strong> {{ exceptionMessage }}
             </div>
             
-            <div class="well well-lg">
-                  
-                <form class="form-horizontal" role="form">
-                
-                    <div class="row">
-        
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-default" ng-click="ConvertToTune(youtubeVideoLink)">Convert Into A Tune</button>
-                        </div>
-
-                    </div>
-				
-                </form>
-            </div>
+            <div ng-view></div>
 
         </div>
         
