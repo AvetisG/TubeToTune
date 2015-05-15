@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace TubeToTune
+namespace TubeToTune.App_Start
 {
 	public class FilterConfig
 	{
