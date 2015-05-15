@@ -31,11 +31,17 @@
                     <div class="row">
         
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Convert Single Tune</button>     
+                            <a href="#singletune" class="btn btn-primary btn-lg btn-block" role="button">
+                                <span class="glyphicon glyphicon-music"></span>
+                                Convert Single Tune
+                            </a>     
                         </div>
                         
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-default btn-lg btn-block">Convert Multiple Tunes</button>
+                            <a href="#multipletunes" class="btn btn-warning btn-lg btn-block" role="button">
+                                <span class="glyphicon glyphicon-headphones"></span>
+                                Convert Multiple Tunes
+                            </a>
                         </div>
 
                     </div>
@@ -53,24 +59,7 @@
                 <strong>Failed!</strong> {{ exceptionMessage }}
             </div>
             
-            <div class="well well-lg">
-                  
-                <form class="form-horizontal" role="form">
-                
-                    <div class="row">
-        
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-default" ng-click="ConvertToTune(youtubeVideoLink)">Convert Into A Tune</button>
-                        </div>
-
-                    </div>
-				
-                </form>
-            </div>
+            <div ng-view=""></div>
 
         </div>
         

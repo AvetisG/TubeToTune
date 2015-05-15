@@ -936,6 +936,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.min.map" />
     <Content Include="Scripts\vendor\angular\standart\version.json" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
+    <Content Include="Views\Home\SingleTune.cshtml" />
+    <Content Include="Views\Home\MultipleTunes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
