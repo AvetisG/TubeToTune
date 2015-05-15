@@ -1,4 +1,4 @@
-﻿var TubeToTuneApp = angular.module('TubeToTuneApp', ['angular-loading-bar']);
+﻿var TubeToTuneApp = angular.module('TubeToTuneApp', ['angular-loading-bar', 'ngRoute']);
 
 TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
 
