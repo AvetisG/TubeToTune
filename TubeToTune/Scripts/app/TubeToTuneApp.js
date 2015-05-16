@@ -19,7 +19,9 @@ TubeToTuneApp.config(['$routeProvider',
 
 TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
 
-    $scope.ConvertToTune = function(youTubeVideoLink) {
+    $scope.YouTubeLinks = [{ link: '' }];
+
+    $scope.ConvertToTune = function (youTubeVideoLink) {
 
         $scope.convertedAudioFilename = "";
         $scope.exceptionMessage = "";
@@ -41,5 +43,10 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
                 $scope.successfullyConverted = false;
                 $scope.exceptionMessage = data.Message;
             });
+    };
+
+    $scope.AddOneMoreLink = function() {
+        var singleYouTubeLink = {link: ''};
+        $scope.YouTubeLinks.push(singleYouTubeLink);
     };
 });
