@@ -124,6 +124,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\custom\bootstrap-extensions.css" />
     <Content Include="Content\custom\main.css" />
     <Content Include="Content\vendor\angular\loading-bar\loading-bar.css" />
     <Content Include="Content\vendor\angular\loading-bar\loading-bar.min.css" />
@@ -937,8 +938,9 @@
     <Content Include="Scripts\vendor\bootstrap\jquery-1.9.1.min.map" />
     <Content Include="Scripts\vendor\angular\standart\version.json" />
     <Content Include="Views\Home\ErrorPage.cshtml" />
-    <Content Include="Views\Home\SingleTune.cshtml" />
-    <Content Include="Views\Home\MultipleTunes.cshtml" />
+    <Content Include="Views\Home\Conversion.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

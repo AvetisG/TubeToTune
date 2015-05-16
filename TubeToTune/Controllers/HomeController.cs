@@ -14,12 +14,7 @@ namespace TubeToTune.Controllers
 			return View();
 		}
 
-		public PartialViewResult SingleTune()
-		{
-			return PartialView();
-		}
-
-		public PartialViewResult MultipleTunes()
+		public PartialViewResult Conversion()
 		{
 			return PartialView();
 		}

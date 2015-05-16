@@ -4,13 +4,7 @@ TubeToTuneApp.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
         when('/', {
-            templateUrl: '/Home/SingleTune',
-        }).
-        when('/singletune', {
-            templateUrl: '/Home/SingleTune',
-        }).
-        when('/multipletunes', {
-            templateUrl: '/Home/MultipleTunes',
+            templateUrl: '/Home/Conversion',
         }).
         otherwise({
             templateUrl: '/Home/ErrorPage'
