@@ -39,8 +39,12 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
             });
     };
 
-    $scope.AddOneMoreLink = function() {
+    $scope.AddLink = function() {
         var singleYouTubeLink = {link: ''};
         $scope.YouTubeLinks.push(singleYouTubeLink);
+    };
+
+    $scope.RemoveLink = function(id) {
+        $scope.YouTubeLinks.splice(id, 1);
     };
 });

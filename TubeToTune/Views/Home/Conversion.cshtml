@@ -4,12 +4,19 @@
 
         <div class="row" ng-repeat="YouTubeLink in YouTubeLinks">
 
-            <div class="col-md-10">
-                <input type="text" class="form-control" placeholder="Enter YouTube video link" ng-model="youtubeVideoLink">      
-            </div>
-                        
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-default" ng-click="AddOneMoreLink()">Add One More Link</button>
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Please enter a YouTube video link here..." ng-model="youtubeVideoLink">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default" ng-click="AddLink()">
+                            <span class="glyphicon glyphicon-plus" ></span>
+                        </button>
+
+                        <button type="submit" class="btn btn-default" ng-click="RemoveLink()">
+                            <span class="glyphicon glyphicon-minus" ></span>
+                        </button>
+                    </span>    
+                </div>
             </div>
 
         </div>
