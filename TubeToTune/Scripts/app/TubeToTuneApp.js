@@ -13,7 +13,17 @@ TubeToTuneApp.config(['$routeProvider',
 
 TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
 
-    $scope.YouTubeLinks = [{ link: '' }];
+    var youtubeId = 0;
+    $scope.YouTubeLinks = [{ id: youtubeId, link: '' }];
+
+    $scope.AreThereYouTubeLinks = function () {
+        for (i = 0; i < $scope.YouTubeLinks.length; i++) {
+            if ($scope.YouTubeLinks[i].link != "") {
+                return true;
+            }
+        }
+        return false;
+    };
 
     $scope.ConvertToTune = function (youTubeVideoLink) {
 
@@ -39,12 +49,20 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
             });
     };
 
-    $scope.AddLink = function() {
-        var singleYouTubeLink = {link: ''};
+    $scope.AddLink = function () {
+        youtubeId++;
+        var singleYouTubeLink = { id: youtubeId, link: '' };
         $scope.YouTubeLinks.push(singleYouTubeLink);
     };
 
-    $scope.RemoveLink = function(id) {
-        $scope.YouTubeLinks.splice(id, 1);
+    $scope.RemoveLink = function (id) {
+
+        if ($scope.YouTubeLinks.length == 1) return;
+
+        for (i = 0; i < $scope.YouTubeLinks.length; i++) {
+            if ($scope.YouTubeLinks[i].id == id) {
+                $scope.YouTubeLinks.splice(i, 1);
+            }
+        }
     };
 });
