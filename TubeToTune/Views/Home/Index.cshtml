@@ -40,9 +40,9 @@
                             Enter Some Tubes & Get The Tunes
                         </button>   
                         
-                        <button type="submit" class="btn btn-xlarge btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true">
+                        <button type="submit" class="btn btn-xlarge btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
                             <span class="glyphicon glyphicon-music" ></span>
-                            Start Converting The Tunes To Tunes
+                            Start Converting The Tubes To Tunes
                         </button>
 
                     </div>
@@ -53,7 +53,12 @@
     
             <div class="alert alert-success" ng-if="successfullyConverted == true">
                 <strong>Success!</strong> You can now access your converted MP3 file from here: 
-                <a href="/api/download/{{ convertedAudioFilename }}"><button class="btn btn-success">Download Audio</button></a>
+                <a href="/api/download/{{ convertedAudioFilename }}">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-download"></span>
+                        Download Audio
+                    </button>
+                </a>
             </div>
             
             <div class="alert alert-warning" ng-if="successfullyConverted == false">

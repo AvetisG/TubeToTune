@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
+using Ionic.Zip;
+using TubeToTune.Models;
 using YoutubeExtractor;
 
 namespace TubeToTune.Controllers
@@ -12,37 +14,46 @@ namespace TubeToTune.Controllers
 	public class ConvertController : ApiController
 	{
 		[HttpPost]
-		public string ConvertTubeToTune([FromBody] string youTubeVideoLink)
+		public string ConvertTubeToTune([FromBody] List<YouTubeVideoLink> youtubeVideoLinks)
 		{
-			if (string.IsNullOrEmpty(youTubeVideoLink)) throw new AudioExtractionException("Please enter a YouTube link.");
+			if (!youtubeVideoLinks.Any()) throw new AudioExtractionException("Please enter a YouTube link.");
 
-			var convertedAudioFilename = String.Empty;
+			var convertedAudioFilenames = new List<string>();
 
 			try
 			{
-				IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youTubeVideoLink, false);
+				foreach (YouTubeVideoLink youtubeVideoLink in youtubeVideoLinks)
+				{
+					IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youtubeVideoLink.link, false);
 
-				VideoInfo video = videoInfos
-					.Where(info => info.CanExtractAudio)
-					.OrderByDescending(info => info.AudioBitrate)
-					.First();
+					VideoInfo video = videoInfos
+						.Where(info => info.CanExtractAudio)
+						.OrderByDescending(info => info.AudioBitrate)
+						.First();
 
-				if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
+					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-				convertedAudioFilename = RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
+					var convertedAudioFilename = RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
+					var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFilename);
 
-				var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFilename);
+					convertedAudioFilenames.Add(temporaryPath);
 
-				var audioDownloader = new AudioDownloader(video, temporaryPath);
+					var audioDownloader = new AudioDownloader(video, temporaryPath);
 
-				audioDownloader.Execute();
+					audioDownloader.Execute();
+				}
+
+				var zip = new ZipFile(Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), "ZipedFile.zip"));
+				zip.AddFiles(convertedAudioFilenames);
+				zip.Save(); 
+				zip.Dispose();
 			}
 			catch (Exception e)
 			{
 				throw new AudioExtractionException(e.Message);
 			}
 
-			return convertedAudioFilename;
+			return "ZipedFile.zip";
 		}
 
 		private static string RemoveIllegalPathCharacters(string path)

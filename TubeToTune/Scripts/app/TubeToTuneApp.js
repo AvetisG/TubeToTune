@@ -25,14 +25,14 @@ TubeToTuneApp.controller('TuneConvertController', function ($scope, $http) {
         return false;
     };
 
-    $scope.ConvertToTune = function (youTubeVideoLink) {
+    $scope.ConvertToTunes = function (youtubeVideoLinks) {
 
         $scope.convertedAudioFilename = "";
         $scope.exceptionMessage = "";
         $scope.successfullyConverted = null;
         
         $http.post('/api/convert',
-            JSON.stringify(youTubeVideoLink),
+            JSON.stringify(youtubeVideoLinks),
             {
                 headers: {
                     'Content-Type': 'application/json'
