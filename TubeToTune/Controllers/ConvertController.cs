@@ -18,7 +18,15 @@ namespace TubeToTune.Controllers
 		{
 			if (!youtubeVideoLinks.Any()) throw new AudioExtractionException("Please enter a YouTube link.");
 
+			var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			var random = new Random();
+			var result = new string(
+				Enumerable.Repeat(chars, 8)
+						  .Select(s => s[random.Next(s.Length)])
+						  .ToArray());
+
 			var convertedAudioFilenames = new List<string>();
+			var zippedFileName = result + ".zip";
 
 			try
 			{
@@ -42,9 +50,8 @@ namespace TubeToTune.Controllers
 
 					audioDownloader.Execute();
 				}
-
-				var zip = new ZipFile(Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), "ZipedFile.zip"));
-				zip.AddFiles(convertedAudioFilenames);
+				var zip = new ZipFile(Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), zippedFileName));
+				zip.AddFiles(convertedAudioFilenames, false, "");
 				zip.Save(); 
 				zip.Dispose();
 			}
@@ -53,7 +60,7 @@ namespace TubeToTune.Controllers
 				throw new AudioExtractionException(e.Message);
 			}
 
-			return "ZipedFile.zip";
+			return zippedFileName;
 		}
 
 		private static string RemoveIllegalPathCharacters(string path)
