@@ -13,20 +13,14 @@ namespace TubeToTune.Controllers
 {
 	public class ConvertController : ApiController
 	{
+		//TODO: This all needs t be cleaned out because right now it is looking messy
 		[HttpPost]
 		public string ConvertTubeToTune([FromBody] List<YouTubeVideoLink> youtubeVideoLinks)
 		{
 			if (!youtubeVideoLinks.Any()) throw new AudioExtractionException("Please enter a YouTube link.");
 
-			var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			var random = new Random();
-			var result = new string(
-				Enumerable.Repeat(chars, 8)
-						  .Select(s => s[random.Next(s.Length)])
-						  .ToArray());
-
-			var convertedAudioFilenames = new List<string>();
-			var zippedFileName = result + ".zip";
+			string zippedFileName = GenerateZipFilename();
+			List<string> convertedAudioFilenames = new List<string>();
 
 			try
 			{
@@ -61,6 +55,18 @@ namespace TubeToTune.Controllers
 			}
 
 			return zippedFileName;
+		}
+
+		private static string GenerateZipFilename()
+		{
+			var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			var random = new Random();
+			var result = new string(
+				Enumerable.Repeat(chars, 13)
+					.Select(s => s[random.Next(s.Length)])
+					.ToArray());
+
+			return result + ".zip";
 		}
 
 		private static string RemoveIllegalPathCharacters(string path)

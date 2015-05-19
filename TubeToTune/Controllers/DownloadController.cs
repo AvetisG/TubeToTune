@@ -12,7 +12,8 @@ namespace TubeToTune.Controllers
 		[HttpGet]
 		public HttpResponseMessage GetConvertedFile(string convertedAudioFilename)
 		{
-			if (convertedAudioFilename == string.Empty) return new HttpResponseMessage(HttpStatusCode.BadRequest);
+			if (convertedAudioFilename == string.Empty) 
+				return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
 			string path = HttpContext.Current.Request.MapPath(Path.Combine(HttpContext.Current.Request.ApplicationPath, "App_Data/" + convertedAudioFilename));
 			var result = new HttpResponseMessage(HttpStatusCode.OK);
