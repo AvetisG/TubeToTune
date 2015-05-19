@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
 using Ionic.Zip;
+using TubeToTune.Helpers;
 using TubeToTune.Models;
 using YoutubeExtractor;
 
@@ -19,7 +20,6 @@ namespace TubeToTune.Controllers
 		{
 			if (!youtubeVideoLinks.Any()) throw new AudioExtractionException("Please enter a YouTube link.");
 
-			string zippedFileName = GenerateZipFilename();
 			List<string> convertedAudioFilenames = new List<string>();
 
 			try
@@ -35,7 +35,7 @@ namespace TubeToTune.Controllers
 
 					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-					var convertedAudioFilename = RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
+					var convertedAudioFilename = FileNameGenerationHelper.RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
 					var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFilename);
 
 					convertedAudioFilenames.Add(temporaryPath);
@@ -44,37 +44,13 @@ namespace TubeToTune.Controllers
 
 					audioDownloader.Execute();
 				}
-				var zip = new ZipFile(Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), zippedFileName));
-				zip.AddFiles(convertedAudioFilenames, false, "");
-				zip.Save(); 
-				zip.Dispose();
 			}
 			catch (Exception e)
 			{
 				throw new AudioExtractionException(e.Message);
 			}
 
-			return zippedFileName;
+			return FileZippingHelper.ZipConvertedAudioFiles(convertedAudioFilenames);
 		}
-
-		private static string GenerateZipFilename()
-		{
-			var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			var random = new Random();
-			var result = new string(
-				Enumerable.Repeat(chars, 13)
-					.Select(s => s[random.Next(s.Length)])
-					.ToArray());
-
-			return result + ".zip";
-		}
-
-		private static string RemoveIllegalPathCharacters(string path)
-		{
-			string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
-			var r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
-			return r.Replace(path, "").Replace("&", "and");
-		}
-
 	}
 }

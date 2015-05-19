@@ -121,6 +121,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileNameGenerationHelper.cs" />
+    <Compile Include="Helpers\FileZippingHelper.cs" />
     <Compile Include="Models\YouTubeVideoLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
