@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Http;
-using Ionic.Zip;
 using TubeToTune.Helpers;
-using TubeToTune.Models;
 using YoutubeExtractor;
 
 namespace TubeToTune.Controllers
@@ -16,7 +13,7 @@ namespace TubeToTune.Controllers
 	{
 		//TODO: This all needs t be cleaned out because right now it is looking messy
 		[HttpPost]
-		public string ConvertTubeToTune([FromBody] List<YouTubeVideoLink> youtubeVideoLinks)
+		public string ConvertTubeToTune([FromBody] List<string> youtubeVideoLinks)
 		{
 			if (!youtubeVideoLinks.Any()) throw new AudioExtractionException("Please enter a YouTube link.");
 
@@ -24,9 +21,9 @@ namespace TubeToTune.Controllers
 
 			try
 			{
-				foreach (YouTubeVideoLink youtubeVideoLink in youtubeVideoLinks)
+				foreach (string youtubeVideoLink in youtubeVideoLinks)
 				{
-					IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youtubeVideoLink.link, false);
+					IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youtubeVideoLink, false);
 
 					VideoInfo video = videoInfos
 						.Where(info => info.CanExtractAudio)

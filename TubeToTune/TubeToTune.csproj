@@ -123,7 +123,6 @@
     </Compile>
     <Compile Include="Helpers\FileNameGenerationHelper.cs" />
     <Compile Include="Helpers\FileZippingHelper.cs" />
-    <Compile Include="Models\YouTubeVideoLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +145,8 @@
     <Content Include="Content\vendor\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\vendor\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\vendor\bootstrap\bootstrap.css.map" />
+    <Content Include="Scripts\app\controllers\YouTubeLinkUIController.js" />
+    <Content Include="Scripts\app\controllers\ConvertController.js" />
     <Content Include="Scripts\app\TubeToTuneApp.js" />
     <Content Include="Scripts\vendor\angular\loading-bar\loading-bar.js" />
     <Content Include="Scripts\vendor\angular\loading-bar\loading-bar.min.js" />

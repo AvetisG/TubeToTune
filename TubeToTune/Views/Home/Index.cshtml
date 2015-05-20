@@ -14,60 +14,64 @@
         <script src="~/Scripts/vendor/angular/standart/angular.min.js"></script>
         <script src="~/Scripts/vendor/angular/standart/angular-route.min.js"></script>
         <script src="~/Scripts/vendor/angular/loading-bar/loading-bar.min.js"></script>
-        <script src="~/Scripts/app/TubeToTuneApp.js"></script>
-    </head>
+	    <script src="~/Scripts/app/TubeToTuneApp.js"></script>
+		<script src="~/Scripts/app/controllers/ConvertController.js"></script>
+		<script src="~/Scripts/app/controllers/YouTubeLinkUIController.js"></script>
+	</head>
     <body>
 
-        <div class="container" ng-app="TubeToTuneApp" ng-controller="TuneConvertController">
-     
-            <a href="https://github.com/AvetisG/TubeToTune">
-                <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png">
-            </a>
+		<div class="container" ng-app="TubeToTuneApp" ng-controller="YouTubeLinkUIController">
 
-            <div class="jumbotron">
-                <h1>Tube to Tune</h1>
-               
-                <div class="row">
-            
-                    <div class="col-lg-6">
-                        <p class="top-explanation">Convert any YouTube video into its MP3 equivalent and enjoy listening to it on any device of your choice!</p>
-                    </div>
+			<a href="https://github.com/AvetisG/TubeToTune">
+				<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png">
+			</a>
+			
+			@*Scoping the Convert Controller*@
+			<div ng-controller="ConvertController">
+				<div class="jumbotron">
+					<h1>Tube to Tune</h1>
 
-                    <div class="col-lg-6">
-                        
-                        <button type="submit" class="btn btn-xlarge btn-info btn-block" ng-if="AreThereYouTubeLinks() != true">
-                            <span class="glyphicon glyphicon-music" ></span>
-                            Enter Some Tubes & Get The Tunes
-                        </button>   
-                        
-                        <button type="submit" class="btn btn-xlarge btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
-                            <span class="glyphicon glyphicon-music" ></span>
-                            Start Converting The Tubes To Tunes
-                        </button>
+					<div class="row">
 
-                    </div>
+						<div class="col-lg-6">
+							<p class="top-explanation">Convert any YouTube video into its MP3 equivalent and enjoy listening to it on any device of your choice!</p>
+						</div>
 
-                </div>
+						<div class="col-lg-6">
 
-            </div>
-    
-            <div class="alert alert-success" ng-if="successfullyConverted == true">
-                <strong>Success!</strong> You can now access your converted MP3 file from here: 
-                <a href="/api/download/{{ convertedAudioFilename }}">
-                    <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-download"></span>
-                        Download Audio
-                    </button>
-                </a>
-            </div>
-            
-            <div class="alert alert-warning" ng-if="successfullyConverted == false">
-                <strong>Failed!</strong> {{ exceptionMessage }}
-            </div>
-            
-            <div ng-view=""></div>
+							<button type="submit" class="btn btn-xlarge btn-info btn-block" ng-if="AreThereYouTubeLinks() != true">
+								<span class="glyphicon glyphicon-music"></span>
+								Enter Some Tubes & Get The Tunes
+							</button>
 
-        </div>
+							<button type="submit" class="btn btn-xlarge btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
+								<span class="glyphicon glyphicon-music"></span>
+								Start Converting The Tubes To Tunes
+							</button>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="alert alert-success" ng-if="successfullyConverted == true">
+					<strong>Success!</strong> You can now access your converted MP3 file from here:
+					<a href="/api/download/{{ convertedAudioFilename }}">
+						<button class="btn btn-success">
+							<span class="glyphicon glyphicon-download"></span>
+							Download Audio
+						</button>
+					</a>
+				</div>
+
+				<div class="alert alert-warning" ng-if="successfullyConverted == false">
+					<strong>Failed!</strong> {{ exceptionMessage }}
+				</div>
+
+				<div ng-view=""></div>
+			</div>
+		</div>
         
         <div class="navbar navbar-default navbar-fixed-bottom">
             <div class="container">
