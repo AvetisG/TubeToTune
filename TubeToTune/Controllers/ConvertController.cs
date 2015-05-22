@@ -11,7 +11,6 @@ namespace TubeToTune.Controllers
 {
 	public class ConvertController : ApiController
 	{
-		//TODO: This all needs t be cleaned out because right now it is looking messy
 		[HttpPost]
 		public string ConvertTubeToTune([FromBody] List<string> youtubeVideoLinks)
 		{
@@ -32,14 +31,13 @@ namespace TubeToTune.Controllers
 
 					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-					var convertedAudioFilename = FileNameGenerationHelper.RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
-					var temporaryPath = Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFilename);
+					var temporaryPath = Path.Combine(
+						HttpContext.Current.Server.MapPath("~/App_Data"), 
+						FileNameGenerationHelper.RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
 
 					convertedAudioFilenames.Add(temporaryPath);
 
-					var audioDownloader = new AudioDownloader(video, temporaryPath);
-
-					audioDownloader.Execute();
+					new AudioDownloader(video, temporaryPath).Execute();
 				}
 			}
 			catch (Exception e)
