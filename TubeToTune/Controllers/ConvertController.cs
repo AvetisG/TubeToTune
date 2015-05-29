@@ -29,15 +29,14 @@ namespace TubeToTune.Controllers
 						.OrderByDescending(info => info.AudioBitrate)
 						.First();
 
+					string convertedAudioFileName = FileNameGenerationHelper.RemoveIllegalPathCharacters(video.Title) + video.AudioExtension;
+					convertedAudioFilenames.Add(convertedAudioFileName);
+
 					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-					var temporaryPath = Path.Combine(
-						HttpContext.Current.Server.MapPath("~/App_Data"), 
-						FileNameGenerationHelper.RemoveIllegalPathCharacters(video.Title) + video.AudioExtension);
-
-					convertedAudioFilenames.Add(temporaryPath);
-
-					new AudioDownloader(video, temporaryPath).Execute();
+					new AudioDownloader(video, Path.Combine(
+							HttpContext.Current.Server.MapPath("~/App_Data"), 
+							convertedAudioFileName)).Execute();
 				}
 			}
 			catch (Exception e)
@@ -45,7 +44,9 @@ namespace TubeToTune.Controllers
 				throw new AudioExtractionException(e.Message);
 			}
 
-			return FileZippingHelper.ZipConvertedAudioFiles(convertedAudioFilenames);
+			return convertedAudioFilenames.Count() == 1 ? 
+				convertedAudioFilenames.FirstOrDefault() : 
+				FileZippingHelper.ZipConvertedAudioFiles(convertedAudioFilenames);
 		}
 	}
 }

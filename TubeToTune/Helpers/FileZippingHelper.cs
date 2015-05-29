@@ -8,16 +8,16 @@ using Ionic.Zip;
 namespace TubeToTune.Helpers
 {
 	public class FileZippingHelper
-	{
+	{		
 		public static string ZipConvertedAudioFiles(IEnumerable<string> convertedAudioFilenames)
 		{
 			var zippedFileName = string.Empty;
 
 			try
 			{
-				zippedFileName = GenerateZipFilename();
+				zippedFileName = FileNameGenerationHelper.GenerateFilename();
 				var zip = new ZipFile(Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), zippedFileName));
-				zip.AddFiles(convertedAudioFilenames, false, "");
+				zip.AddFiles(convertedAudioFilenames.Select(caf => Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), caf)), false, "");
 				zip.Save();
 				zip.Dispose();
 			}
@@ -27,18 +27,6 @@ namespace TubeToTune.Helpers
 			}
 
 			return zippedFileName;
-		}
-
-		private static string GenerateZipFilename()
-		{
-			var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			var random = new Random();
-			var result = new string(
-				Enumerable.Repeat(chars, 13)
-					.Select(s => s[random.Next(s.Length)])
-					.ToArray());
-
-			return result + ".zip";
 		}
 	}
 }
