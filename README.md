@@ -11,7 +11,7 @@ By using this service you acknowledge and agree to the following terms of servic
 
 1) This following service (TubeToTune) is not to be used to download audio that is copyrighted!
 
-2) TuneToTune does not condone piracy in any form. The goal that this tool be used to obtain legal audio that would otherwise be extremely difficult, if not impossible, to find. Youtube is a perfect source for these audio clips. 
+2) TuneToTune does not condone piracy in any form. The goal of this service is to obtain legal audio that would otherwise be extremely difficult, if not impossible, to find. Youtube is a perfect source for these audio clips. 
 
 ## Please Note
 
@@ -19,7 +19,7 @@ If you are a copyright owner of any material that was downloaded using this tool
 
 ## Please Note
 
-If you would like to use the app please visit http://TubeToTune.apphb.com and start converting your favorite YouTube videos into MP3 files.
+If you would like to use the app please visit http://TubeToTune.apphb.com and start converting non-copyrighted YouTube videos into audio files.
 
 It is able to handle multiple YouTube videos since the second release.
 
