@@ -17,6 +17,8 @@ By using this service you acknowledge and agree to the following terms of servic
 
 If you are a copyright owner of any material that was downloaded using this tool please contact me and I will block that particular piece of media.
 
+Please read [YouTube's Fair Use Article](https://www.youtube.com/yt/copyright/fair-use.html#yt-copyright-four-factors) in order not to have any problems with copyrighted content. 
+
 ## Usage Notes
 
 If you would like to use the app please visit http://TubeToTune.apphb.com and start converting non-copyrighted YouTube videos into audio files.
