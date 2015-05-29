@@ -18,5 +18,10 @@ namespace TubeToTune.Controllers
 		{
 			return PartialView();
 		}
+
+        public PartialViewResult TermsOfUse()
+        {
+            return PartialView();
+        }
     }
 }

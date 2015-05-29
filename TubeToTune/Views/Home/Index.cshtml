@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="~/Content/vendor/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="~/Content/vendor/angular/loading-bar/loading-bar.min.css">
         <link rel="stylesheet" href="~/Content/custom/main.css">
-        <link rel="stylesheet" href="~/Content/custom/bootstrap-extensions.css">
         <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
         <script src="~/Scripts/vendor/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="~/Scripts/vendor/bootstrap/bootstrap.min.js"></script>
@@ -28,32 +27,59 @@
 			
 			@*Scoping the Convert Controller*@
 			<div ng-controller="ConvertController">
-				<div class="jumbotron">
-					<h1>Tube to Tune</h1>
+			    <div class="jumbotron">
+			        
+			        <h1>Tube to Tune</h1>
 
-					<div class="row">
+			        <div class="row">
 
-						<div class="col-lg-6">
-							<p class="top-explanation">Convert any YouTube video into its MP3 equivalent and enjoy listening to it on any device of your choice!</p>
-						</div>
+			            <div class="col-lg-12">
+			                <p class="top-explanation">Use it to convert and download non-copyrighted YouTube videos.</p>
+			            </div>
 
-						<div class="col-lg-6">
+			        </div>
+                    
+			        <div class="row">
+				         
+			            <div class="col-lg-4">
 
-							<button type="submit" class="btn btn-xlarge btn-info btn-block" ng-if="AreThereYouTubeLinks() != true">
-								<span class="glyphicon glyphicon-music"></span>
-								Enter Some Tubes & Get The Tunes
-							</button>
+			                <a role="button" class="btn btn-lg btn-info btn-block" ng-if="AreThereYouTubeLinks() != true" href="#index">
+			                    <span class="glyphicon glyphicon-music"></span>
+			                    Enter Tube Links
+			                </a>
 
-							<button type="submit" class="btn btn-xlarge btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
-								<span class="glyphicon glyphicon-music"></span>
-								Start Converting The Tubes To Tunes
-							</button>
+			                <button type="submit" class="btn btn-lg btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
+			                    <span class="glyphicon glyphicon-music"></span>
+			                    Start Converting
+			                </button>
 
-						</div>
+			            </div>
+                        
+			            <div class="col-lg-4">
 
-					</div>
+			                <a aria-label="Star AvetisG/TubeToTune on GitHub" 
+			                   data-count-aria-label="# stargazers on GitHub" 
+			                   data-count-api="/repos/AvetisG/TubeToTune#stargazers_count" 
+			                   data-count-href="/AvetisG/TubeToTune/stargazers" 
+			                   data-style="mega" data-icon="octicon-star" href="https://github.com/AvetisG/TubeToTune" role="button" class="btn btn-lg btn-success btn-block">
+			                    <span class="glyphicon glyphicon-star"></span>
+			                    This App!
+			                </a>            
 
-				</div>
+			            </div>
+                        
+			            <div class="col-lg-4">
+
+			                <a role="button" class="btn btn-lg btn-danger btn-block" href="#terms">
+			                    <span class="glyphicon glyphicon-book"></span>
+			                    Terms Of Use
+			                </a>
+
+			            </div>
+
+			        </div>
+
+			    </div>
 
 				<div class="alert alert-success" ng-if="successfullyConverted == true">
 					<strong>Success!</strong> You can now access your converted MP3 file from here:
@@ -72,21 +98,6 @@
 				<div ng-view=""></div>
 			</div>
 		</div>
-        
-        <div class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <p class="navbar-text pull-left">Tube To Tune - Convert Your YouTube Videos to MP3!</p>
-                <a aria-label="Star AvetisG/TubeToTune on GitHub" 
-                   data-count-aria-label="# stargazers on GitHub" 
-                   data-count-api="/repos/AvetisG/TubeToTune#stargazers_count" 
-                   data-count-href="/AvetisG/TubeToTune/stargazers" 
-                   data-style="mega" data-icon="octicon-star" href="https://github.com/AvetisG/TubeToTune" class="navbar-btn btn-info btn pull-right">
-                    <span class="glyphicon glyphicon-star"></span>
-                    This App!
-                </a>             
-               
-            </div>
-        </div>
 
     </body>
 </html>
