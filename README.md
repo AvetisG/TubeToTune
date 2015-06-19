@@ -1,4 +1,8 @@
-# Tube to Tune
+# Tube to Tune [![Build Status][2]][1]
+
+  [1]: https://ci.appveyor.com/project/AvetisG/tubetotune
+  [2]: https://ci.appveyor.com/api/projects/status/6qtr473hkr96qg9u?svg=true
+  
 A nifty little web app for converting and downloading non-copyrighted YouTube videos. 
 
 This is specifically made for people who make videos on YouTube and at times need non-copyrighted audio files to use in their YouTube videos. 
