@@ -34,9 +34,7 @@ namespace TubeToTune.Controllers
 
 					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
-					new AudioDownloader(video, Path.Combine(
-							HttpContext.Current.Server.MapPath("~/App_Data"), 
-							convertedAudioFileName)).Execute();
+					new AudioDownloader(video, Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFileName)).Execute();
 				}
 			}
 			catch (Exception e)
