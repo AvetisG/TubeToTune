@@ -18,10 +18,10 @@ namespace TubeToTune.Controllers
 
 			List<string> convertedAudioFilenames = new List<string>();
 
-			try
-			{
-				foreach (string youtubeVideoLink in youtubeVideoLinks)
-				{
+            foreach (string youtubeVideoLink in youtubeVideoLinks)
+            {
+                try
+			    {
 					IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(youtubeVideoLink, false);
 
 					VideoInfo video = videoInfos
@@ -35,14 +35,15 @@ namespace TubeToTune.Controllers
 					if (video.RequiresDecryption) { DownloadUrlResolver.DecryptDownloadUrl(video); }
 
 					new AudioDownloader(video, Path.Combine(HttpContext.Current.Server.MapPath("~/App_Data"), convertedAudioFileName)).Execute();
-				}
-			}
-			catch (Exception e)
-			{
-				throw new AudioExtractionException(e.Message);
-			}
+				
+			    }
+			    catch (Exception e)
+			    {
+				    throw new AudioExtractionException(e.Message);
+			    }
+            }
 
-			return convertedAudioFilenames.Count() == 1 ? 
+            return convertedAudioFilenames.Count() == 1 ? 
 				convertedAudioFilenames.FirstOrDefault() : 
 				FileZippingHelper.ZipConvertedAudioFiles(convertedAudioFilenames);
 		}
