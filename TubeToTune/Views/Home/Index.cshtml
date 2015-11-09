@@ -57,7 +57,7 @@
 			                    Enter Tube Links
 			                </a>
 
-			                <button type="submit" class="btn btn-lg btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(YouTubeLinks)">
+			                <button type="submit" class="btn btn-lg btn-warning btn-block" ng-if="AreThereYouTubeLinks() == true" ng-click="ConvertToTunes(VideoConversionDetails)">
 			                    <span class="glyphicon glyphicon-music"></span>
 			                    Start Converting
 			                </button>
@@ -92,16 +92,20 @@
 
 				<div class="alert alert-success" ng-if="successfullyConverted == true">
 					<strong>Success!</strong> You can now access your converted MP3 file from here:
-					<a href="/api/download/{{ convertedAudioFilename }}">
-						<button class="btn btn-success">
-							<span class="glyphicon glyphicon-download"></span>
-							Download Audio
-						</button>
+					<a href="/api/download/{{ convertedAudioFilename }}" role="button" class="btn btn-success">
+						<span class="glyphicon glyphicon-download"></span>
+						Download Audio
 					</a>
+                    <div ng-repeat="exceptionMessage in exceptionMessages track by $index">
+                        <span class="label label-warning">{{ exceptionMessages[$index].VideoId }}</span> - {{ exceptionMessages[$index].VideoConversionError }}
+                    </div>
 				</div>
 
 				<div class="alert alert-warning" ng-if="successfullyConverted == false">
-					<strong>Failed!</strong> {{ exceptionMessage }}
+					<strong>Failed!</strong>
+                    <div ng-repeat="exceptionMessage in exceptionMessages track by $index">
+                        <span class="label label-warning">{{ exceptionMessages[$index].VideoId }}</span> - {{ exceptionMessages[$index].VideoConversionError }}
+                    </div>
 				</div>
 
 				<div ng-view=""></div>

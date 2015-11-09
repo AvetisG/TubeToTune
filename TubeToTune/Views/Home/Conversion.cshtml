@@ -2,17 +2,20 @@
 
 	<form class="form-horizontal" role="form">
 
-		<div class="row" ng-repeat="YouTubeLink in YouTubeLinks track by $index">
+		<div class="row" ng-repeat="VideoConversionDetail in VideoConversionDetails track by $index">
 
 			<div class="col-xs-12">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Please enter a YouTube video link here..." ng-model="YouTubeLinks[$index].link" id="YouTubeLinks[$index].id">
+                    <span class="input-group-addon">{{ VideoConversionDetails[$index].VideoId }}</span>
+					<input type="text" class="form-control" placeholder="Please enter a YouTube video link here..." 
+                           ng-model="VideoConversionDetails[$index].VideoLink" 
+                           id="VideoConversionDetails[$index].VideoId">
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-default" ng-click="AddLink()">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
 
-						<button type="submit" class="btn btn-default" ng-click="RemoveLink(YouTubeLinks[$index].id)">
+						<button type="submit" class="btn btn-default" ng-click="RemoveLink(VideoConversionDetails[$index].VideoId)">
 							<span class="glyphicon glyphicon-minus"></span>
 						</button>
 					</span>

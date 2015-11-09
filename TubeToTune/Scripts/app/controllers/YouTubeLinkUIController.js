@@ -1,11 +1,11 @@
 ﻿TubeToTuneApp.controller('YouTubeLinkUIController', function ($scope, $http) {
 
     var youtubeId = 0;
-    $scope.YouTubeLinks = [{ id: youtubeId, link: '' }];
+    $scope.VideoConversionDetails = [{ VideoId: youtubeId, VideoLink: '' }];
 
 	$scope.AreThereYouTubeLinks = function() {
-		for (i = 0; i < $scope.YouTubeLinks.length; i++) {
-			if ($scope.YouTubeLinks[i].link != "") {
+	    for (i = 0; i < $scope.VideoConversionDetails.length; i++) {
+		    if ($scope.VideoConversionDetails[i].VideoLink != "") {
 				return true;
 			}
 		}
@@ -14,20 +14,20 @@
 
     $scope.AddLink = function () {
         youtubeId++;
-        var singleYouTubeLink = { id: youtubeId, link: '' };
-        $scope.YouTubeLinks.push(singleYouTubeLink);
+        var singleYouTubeLink = { VideoId: youtubeId, VideoLink: '' };
+        $scope.VideoConversionDetails.push(singleYouTubeLink);
     };
 
     $scope.RemoveLink = function (id) {
 
-    	if ($scope.YouTubeLinks.length == 1) {
-    		$scope.YouTubeLinks[0].link = '';
+        if ($scope.VideoConversionDetails.length == 1) {
+    	    $scope.VideoConversionDetails[0].VideoLink = '';
     		return;
 	    }
 
-        for (i = 0; i < $scope.YouTubeLinks.length; i++) {
-            if ($scope.YouTubeLinks[i].id == id) {
-                $scope.YouTubeLinks.splice(i, 1);
+    	for (i = 0; i < $scope.VideoConversionDetails.length; i++) {
+            if ($scope.VideoConversionDetails[i].VideoId == id) {
+                $scope.VideoConversionDetails.splice(i, 1);
             }
         }
     };

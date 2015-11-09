@@ -1,32 +1,33 @@
 ﻿TubeToTuneApp.controller('ConvertController', function ($scope, $http) {
 
-    $scope.ConvertToTunes = function (youtubeVideoLinks) {
+    $scope.ConvertToTunes = function (VideoConversionDetails) {
 
         $scope.convertedAudioFilename = "";
-        $scope.exceptionMessage = "";
+        $scope.exceptionMessages = "";
         $scope.successfullyConverted = null;
 
-	    var links = [];
-
-	    for (i = 0; i < youtubeVideoLinks.length; i++) {
-	    	links.push(youtubeVideoLinks[i].link);
-        }
+        var ConversionRequest = { VideoConversionDetails: VideoConversionDetails }
 
         $http.post('/api/convert',
-            JSON.stringify(links),
+            JSON.stringify(ConversionRequest),
             {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            .success(function(data) {     
-                $scope.successfullyConverted = true;
-                $scope.convertedAudioFilename = data;
-                
+            .success(function (data) {
+
+                if (data.AllFailed == true)
+                {
+                    $scope.successfullyConverted = false;
+                }
+                else
+                {
+                    $scope.successfullyConverted = true;
+                    $scope.convertedAudioFilename = data.ConvertedAudioFilename;
+                }
+
+                $scope.exceptionMessages = data.ErrorMessages;
             })
-            .error(function (data) {
-                $scope.successfullyConverted = false;
-                $scope.exceptionMessage = data.Message;
-            });
     };
 });

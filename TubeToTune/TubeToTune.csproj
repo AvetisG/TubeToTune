@@ -26,6 +26,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -124,6 +125,10 @@
     <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ConvertController.cs" />
+    <Compile Include="Dtos\ConversionRequest.cs" />
+    <Compile Include="Dtos\ConversionResponse.cs" />
+    <Compile Include="Dtos\VideoConversionDetailsDto.cs" />
+    <Compile Include="Dtos\VideoConversionErrorDetailsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
